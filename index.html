@@ -17,17 +17,17 @@
     <!-- FontAwesome (Ikony) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Konfiguracja kolorów Tailwind zgodnie z wymaganiami -->
+    <!-- Konfiguracja kolorów Tailwind - ZAKTUALIZOWANA PALETA -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2C3E50', // Ciemny granat - nagłówki
-                        accent: '#4DA3A9',  // Morski turkus - akcenty
-                        accentHover: '#3B8D93', // Ciemniejszy turkus - hover
-                        bgLight: '#F5F5F5', // Jasne tło sekcji
-                        textMain: '#1C1C1C', // Główny tekst
+                        primary: '#1e293b', // Nowoczesny Ciemny Granat (Slate 800)
+                        accent: '#1e3a8a',  // ZMIANA: Granat (Blue 900) zamiast turkusu
+                        accentHover: '#172554', // ZMIANA: Ciemniejszy Granat (Blue 950)
+                        bgLight: '#f8fafc', // Bardzo Jasny Szary/Błękit (Slate 50)
+                        textMain: '#334155', // Ciemny Grafit (Slate 700)
                     },
                     fontFamily: {
                         sans: ['Manrope', 'sans-serif'],
@@ -41,7 +41,7 @@
         /* Niestandardowe style i animacje */
         body {
             font-family: 'Manrope', sans-serif;
-            color: #1C1C1C;
+            color: #334155; /* Użycie nowego koloru tekstu */
         }
 
         /* Klasa do animacji pojawiania się elementów */
@@ -89,7 +89,7 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
             <a href="#" class="text-2xl font-bold text-primary tracking-tight">
-                BARTŁOMIEJ <span class="text-accent">JEKIEL</span>
+                Bartłomiej <span class="text-accent">Jekiel</span>
                 <span class="block text-xs font-normal text-gray-500 uppercase tracking-widest mt-1">Osteopata / Fizjoterapeuta</span>
             </a>
 
@@ -131,7 +131,7 @@
                 <h1 class="text-4xl lg:text-6xl font-bold text-primary leading-tight mb-6">
                     Przywracamy zdrowie, <br>rozumiejąc Twoje ciało.
                 </h1>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+                <p class="text-lg text-textMain mb-8 leading-relaxed max-w-lg">
                     Holistyczne podejście do zdrowia dzieci i dorosłych. Skuteczna terapia bólu i powrót do sprawności w atmosferze pełnej empatii i profesjonalizmu.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
@@ -176,7 +176,7 @@
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">Bartłomiej Jekiel</h2>
                 <h3 class="text-xl text-accent font-medium mb-6">Certyfikowany Osteopata & Fizjoterapeuta</h3>
                 
-                <div class="space-y-4 text-gray-600 leading-loose">
+                <div class="space-y-4 text-textMain leading-loose">
                     <p>
                         Moja praca to pasja poszukiwania przyczyny problemu, a nie tylko leczenie jego objawów. Jako absolwent [Nazwa Uczelni - do uzupełnienia] oraz certyfikowany osteopata, łączę wiedzę medyczną z holistycznym spojrzeniem na organizm człowieka.
                     </p>
@@ -206,7 +206,7 @@
     <section id="zespol" class="py-20 lg:py-28 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal">
             <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">Nasz Zespół</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto mb-8">Współpracuję z doświadczonymi specjalistami. <br><span class="text-accent font-medium">Kliknij na zdjęcie, aby dowiedzieć się więcej o specjaliście.</span></p>
+            <p class="text-textMain max-w-2xl mx-auto mb-8">Współpracuję z doświadczonymi specjalistami. <br><span class="text-accent font-medium">Kliknij na zdjęcie, aby dowiedzieć się więcej o specjaliście.</span></p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -272,7 +272,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">Zakres Pomocy</h2>
-                <p class="text-gray-600">Dobieramy metody terapii indywidualnie do Twoich potrzeb.</p>
+                <p class="text-textMain">Dobieramy metody terapii indywidualnie do Twoich potrzeb.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-10">
@@ -282,7 +282,7 @@
                         <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary mb-4">Osteopatia</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-textMain mb-6 leading-relaxed">
                         Manualna metoda diagnozowania i leczenia zaburzeń ruchomości stawów i tkanek. Skupiamy się na odnalezieniu pierwotnej przyczyny bólu.
                     </p>
                     <ul class="space-y-3 text-gray-500 mb-8">
@@ -295,11 +295,11 @@
 
                 <!-- Karta Oferty: Rehabilitacja -->
                 <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow reveal delay-100">
-                    <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center mb-6 text-accent">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-accent">
                         <i class="fa-solid fa-person-walking text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary mb-4">Rehabilitacja</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-textMain mb-6 leading-relaxed">
                         Kompleksowe usprawnianie ruchowe po operacjach ortopedycznych oraz w przewlekłych dolegliwościach bólowych układu ruchu.
                     </p>
                     <ul class="space-y-3 text-gray-500 mb-8">
@@ -318,7 +318,7 @@
         <div class="flex flex-col lg:flex-row gap-16 items-center">
             <div class="lg:w-1/2 reveal">
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">Pierwsza wizyta</h2>
-                <p class="text-gray-600 mb-8 text-lg">
+                <p class="text-textMain mb-8 text-lg">
                     Rozumiem, że wizyta u specjalisty może wiązać się ze stresem. Zobacz, jak wygląda proces, abyś czuł się pewnie i bezpiecznie.
                 </p>
                 
@@ -362,23 +362,23 @@
                 <h3 class="text-2xl font-bold text-primary mb-4">Informacje praktyczne</h3>
                 <ul class="space-y-4">
                     <li class="flex justify-between items-center border-b border-gray-200 pb-2">
-                        <span class="text-gray-600">Czas trwania wizyty</span>
+                        <span class="text-textMain">Czas trwania wizyty</span>
                         <span class="font-bold text-primary">45 - 60 min</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-gray-200 pb-2">
-                        <span class="text-gray-600">Rejestracja</span>
+                        <span class="text-textMain">Rejestracja</span>
                         <span class="font-bold text-primary">Telefoniczna / Online</span>
                     </li>
                     <li class="flex justify-between items-center border-b border-gray-200 pb-2">
-                        <span class="text-gray-600">Płatność</span>
+                        <span class="text-textMain">Płatność</span>
                         <span class="font-bold text-primary">Gotówka / Karta / BLIK</span>
                     </li>
                     <li class="flex justify-between items-center pt-2">
-                        <span class="text-gray-600">Dostępność</span>
+                        <span class="text-textMain">Dostępność</span>
                         <span class="font-bold text-primary">Pon - Pt</span>
                     </li>
                 </ul>
-                <div class="mt-8 p-4 bg-teal-50 text-teal-800 rounded-lg text-sm border border-teal-100">
+                <div class="mt-8 p-4 bg-blue-50 text-blue-900 rounded-lg text-sm border border-blue-100">
                     <i class="fa-solid fa-info-circle mr-2"></i> Nie musisz mieć skierowania od lekarza, aby umówić się na wizytę.
                 </div>
             </div>
@@ -390,7 +390,7 @@
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12 reveal">
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">Cennik usług</h2>
-                <p class="text-gray-600">Przejrzyste zasady współpracy.</p>
+                <p class="text-textMain">Przejrzyste zasady współpracy.</p>
             </div>
 
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden reveal">
@@ -426,7 +426,7 @@
             <!-- Dane kontaktowe -->
             <div class="reveal">
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-8">Umów wizytę w Libiążu</h2>
-                <p class="text-gray-600 mb-10">
+                <p class="text-textMain mb-10">
                     Masz pytania lub chcesz zarezerwować termin? Skontaktuj się telefonicznie lub skorzystaj z formularza.
                 </p>
 
@@ -516,7 +516,7 @@
             
             <div class="text-sm text-gray-400 text-center md:text-right">
                 <p>&copy; 2024 Bartłomiej Jekiel. Wszelkie prawa zastrzeżone.</p>
-                <p class="mt-1">Projekt strony: UX Designer</p>
+                <p class="mt-1">Projekt strony: Jakub Jekiel</p>
             </div>
         </div>
     </footer>
@@ -547,7 +547,7 @@
                             <p id="modal-role" class="text-accent text-sm font-bold uppercase tracking-wide mb-2">Role</p>
                             <h3 id="modal-name" class="text-3xl font-bold text-primary mb-4">Name</h3>
                             
-                            <div class="space-y-4 text-gray-600 mb-6 leading-relaxed">
+                            <div class="space-y-4 text-textMain mb-6 leading-relaxed">
                                 <p id="modal-bio">Description goes here...</p>
                             </div>
     
