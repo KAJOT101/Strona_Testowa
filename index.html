@@ -3,52 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OsteoBalance - Gabinet Osteopatyczny | Holistyczna Terapia</title>
-    <meta name="description" content="Profesjonalny gabinet osteopatii. Terapia bólu kręgosłupa, głowy i stawów. Podejście holistyczne i indywidualne dla dorosłych i dzieci.">
+    <title>Bartłomiej Jekiel - Osteopata | Libiąż</title>
+    <meta name="description" content="Profesjonalna osteopatia i rehabilitacja w Libiążu. Bartłomiej Jekiel - pomoc dla dzieci i dorosłych. Umów wizytę już dziś.">
     
-    <!-- Google Fonts: Manrope (Nowoczesny, czytelny Sans-Serif) -->
+    <!-- Google Fonts: Manrope (Nowoczesny, czytelny, profesjonalny) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Framework CSS do szybkiego stylowania) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons (Lekkie, liniowe ikony) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- FontAwesome (Ikony) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Konfiguracja Tailwind -->
+    <!-- Konfiguracja kolorów Tailwind zgodnie z wymaganiami -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        primary: '#2C3E50', // Ciemny granat - nagłówki
+                        accent: '#4DA3A9',  // Morski turkus - akcenty
+                        accentHover: '#3B8D93', // Ciemniejszy turkus - hover
+                        bgLight: '#F5F5F5', // Jasne tło sekcji
+                        textMain: '#1C1C1C', // Główny tekst
+                    },
                     fontFamily: {
                         sans: ['Manrope', 'sans-serif'],
-                    },
-                    colors: {
-                        stone: {
-                            50: '#fafaf9',
-                            100: '#f5f5f4',
-                            200: '#e7e5e4',
-                            800: '#292524',
-                            900: '#1c1917',
-                        },
-                        sage: {
-                            50: '#f4f7f5',
-                            100: '#e3ebe5',
-                            500: '#84a98c', // Główny akcent (szałwia)
-                            600: '#52796f', // Ciemniejsza szałwia
-                            700: '#354f52', // Bardzo ciemny morski/zielony
-                        }
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
                     }
                 }
             }
@@ -56,558 +38,572 @@
     </script>
 
     <style>
-        /* Dodatkowe style dla płynności i estetyki */
+        /* Niestandardowe style i animacje */
         body {
-            background-color: #fafaf9; /* Stone-50 */
-            color: #292524; /* Stone-800 */
-        }
-        
-        .glass-nav {
-            background: rgba(250, 250, 249, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(231, 229, 228, 0.5);
+            font-family: 'Manrope', sans-serif;
+            color: #1C1C1C;
         }
 
-        .section-padding {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-padding {
-                padding-top: 7rem;
-                padding-bottom: 7rem;
-            }
-        }
-
-        /* Ukrywanie elementów przed animacją */
+        /* Klasa do animacji pojawiania się elementów */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
-        
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Subtelny cień dla kart */
-        .soft-shadow {
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        /* Delikatny cień pod nawigacją po scrollu */
+        .scrolled-nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Styl mapy Google (szary filtr dla estetyki) */
+        .map-container iframe {
+            filter: grayscale(20%) contrast(1.1);
+            border-radius: 0.5rem;
+        }
+
+        /* Scrollbar dla modala */
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="antialiased leading-relaxed">
+<body class="bg-white antialiased">
 
-    <!-- NAWIGACJA -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-2xl font-light tracking-wide text-sage-700">
-                        Osteo<span class="font-bold text-sage-600">Balance</span>.
-                    </a>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#o-mnie" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">O mnie</a>
-                    <a href="#osteopatia" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">Czym jest osteopatia</a>
-                    <a href="#uslugi" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">Usługi</a>
-                    <a href="#wizyta" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">Pierwsza wizyta</a>
-                    <a href="#cennik" class="text-stone-600 hover:text-sage-600 transition-colors text-sm font-medium">Cennik</a>
-                    <a href="#kontakt" class="bg-sage-600 text-white px-6 py-2.5 rounded-full hover:bg-sage-700 transition-all duration-300 shadow-sm hover:shadow-md text-sm font-medium">
-                        Umów wizytę
-                    </a>
-                </div>
+    <!-- NAGŁÓWEK / NAWIGACJA -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-primary tracking-tight">
+                BARTŁOMIEJ <span class="text-accent">JEKIEL</span>
+                <span class="block text-xs font-normal text-gray-500 uppercase tracking-widest mt-1">Osteopata / Fizjoterapeuta</span>
+            </a>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-stone-600 hover:text-sage-600 focus:outline-none">
-                        <i data-lucide="menu" class="w-8 h-8"></i>
-                    </button>
-                </div>
-            </div>
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex space-x-8 items-center font-medium text-gray-600">
+                <a href="#o-mnie" class="hover:text-accent transition-colors">O mnie</a>
+                <a href="#zespol" class="hover:text-accent transition-colors">Zespół</a>
+                <a href="#oferta" class="hover:text-accent transition-colors">Oferta</a>
+                <a href="#pierwsza-wizyta" class="hover:text-accent transition-colors">Pierwsza wizyta</a>
+                <a href="#cennik" class="hover:text-accent transition-colors">Cennik</a>
+                <a href="#kontakt" class="bg-accent text-white px-6 py-2.5 rounded-full hover:bg-accentHover transition-colors shadow-lg shadow-accent/20">
+                    Umów wizytę
+                </a>
+            </nav>
+
+            <!-- Menu Mobile Hamburger -->
+            <button id="mobile-menu-btn" class="md:hidden text-primary focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
         </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-stone-50 border-t border-stone-200">
-            <div class="px-4 pt-4 pb-8 space-y-2 shadow-lg">
-                <a href="#o-mnie" class="block px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:text-sage-600 hover:bg-stone-100">O mnie</a>
-                <a href="#osteopatia" class="block px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:text-sage-600 hover:bg-stone-100">Czym jest osteopatia</a>
-                <a href="#uslugi" class="block px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:text-sage-600 hover:bg-stone-100">Usługi</a>
-                <a href="#wizyta" class="block px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:text-sage-600 hover:bg-stone-100">Pierwsza wizyta</a>
-                <a href="#cennik" class="block px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:text-sage-600 hover:bg-stone-100">Cennik</a>
-                <a href="#kontakt" class="block mt-4 text-center w-full bg-sage-600 text-white px-6 py-3 rounded-lg font-medium">Umów wizytę</a>
-            </div>
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg flex-col py-4 px-6 space-y-4">
+            <a href="#o-mnie" class="block text-gray-700 hover:text-accent">O mnie</a>
+            <a href="#zespol" class="block text-gray-700 hover:text-accent">Zespół</a>
+            <a href="#oferta" class="block text-gray-700 hover:text-accent">Oferta</a>
+            <a href="#pierwsza-wizyta" class="block text-gray-700 hover:text-accent">Pierwsza wizyta</a>
+            <a href="#cennik" class="block text-gray-700 hover:text-accent">Cennik</a>
+            <a href="#kontakt" class="block text-accent font-bold">Umów wizytę</a>
         </div>
-    </nav>
+    </header>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <!-- Text Content -->
-                <div class="order-2 lg:order-1 reveal">
-                    <span class="inline-block py-1 px-3 rounded-full bg-sage-100 text-sage-700 text-xs font-semibold tracking-wide uppercase mb-6">
-                        Holistyczna Terapia Manualna
-                    </span>
-                    <h1 class="text-4xl lg:text-5xl xl:text-6xl font-light text-stone-900 leading-tight mb-6">
-                        Przywracamy naturalną <span class="font-medium text-sage-600 relative inline-block">równowagę<svg class="absolute w-full h-3 -bottom-1 left-0 text-sage-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" /></svg></span> Twojego ciała.
-                    </h1>
-                    <p class="text-lg text-stone-600 mb-8 max-w-lg leading-relaxed">
-                        Jako dyplomowany osteopata pomagam dotrzeć do źródła bólu, a nie tylko łagodzić jego objawy. Poczuj ulgę i odzyskaj komfort życia w bezpiecznej atmosferze.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#kontakt" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-sage-600 hover:bg-sage-700 transition-all shadow-sm hover:shadow-lg">
-                            Umów wizytę
-                        </a>
-                        <a href="#osteopatia" class="inline-flex justify-center items-center px-8 py-3.5 border border-stone-300 text-base font-medium rounded-lg text-stone-700 bg-white hover:bg-stone-50 transition-all">
-                            Dowiedz się więcej
-                        </a>
-                    </div>
-                    
-                    <!-- Trust badges -->
-                    <div class="mt-12 flex items-center gap-6 text-stone-400">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="shield-check" class="w-5 h-5"></i>
-                            <span class="text-sm">Certyfikowany Specjalista</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="users" class="w-5 h-5"></i>
-                            <span class="text-sm">Ponad 2000 pacjentów</span>
-                        </div>
-                    </div>
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <!-- Tekst Hero -->
+            <div class="lg:w-1/2 reveal active">
+                <span class="text-accent font-semibold tracking-wider text-sm uppercase mb-4 block">Gabinet Osteopatii w Libiążu</span>
+                <h1 class="text-4xl lg:text-6xl font-bold text-primary leading-tight mb-6">
+                    Przywracamy zdrowie, <br>rozumiejąc Twoje ciało.
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+                    Holistyczne podejście do zdrowia dzieci i dorosłych. Skuteczna terapia bólu i powrót do sprawności w atmosferze pełnej empatii i profesjonalizmu.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#kontakt" class="text-center bg-accent text-white px-8 py-4 rounded-full font-semibold hover:bg-accentHover transition-colors shadow-lg shadow-accent/30">
+                        Umów wizytę
+                    </a>
+                    <a href="#oferta" class="text-center bg-gray-100 text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors">
+                        Dowiedz się więcej
+                    </a>
                 </div>
-
-                <!-- Image Content -->
-                <div class="order-1 lg:order-2 relative reveal delay-200">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] lg:aspect-square">
-                        <!-- Obraz symbolizujący terapię/relaks - zastąp własnym zdjęciem -->
-                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Gabinet osteopatyczny - terapia manualna" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-in-out">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    </div>
-                    <!-- Decorative element -->
-                    <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-sage-100 rounded-full -z-10 opacity-70 blur-xl"></div>
-                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-stone-200 rounded-full -z-10 opacity-50 blur-xl"></div>
+            </div>
+            
+            <!-- Zdjęcie Hero -->
+            <div class="lg:w-1/2 reveal delay-200">
+                <div class="relative">
+                    <!-- Ozdobny prostokąt w tle -->
+                    <div class="absolute -top-6 -right-6 w-full h-full border-2 border-accent rounded-2xl z-0 hidden lg:block"></div>
+                    <!-- Placeholder na zdjęcie: Wgraj tutaj zdjęcie Bartłomieja przy pracy -->
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Bartłomiej Jekiel Osteopata" 
+                         class="relative z-10 w-full h-[500px] object-cover rounded-2xl shadow-2xl"
+                         onerror="this.src='https://via.placeholder.com/600x500?text=Zdjecie+Osteopaty'">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- O GABINECIE / FILOZOFIA -->
-    <section id="o-mnie" class="section-padding bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-                <h2 class="text-3xl font-light text-stone-900 mb-4">Medycyna manualna z <span class="text-sage-600 font-medium">ludzką twarzą</span></h2>
-                <div class="w-16 h-1 bg-sage-200 mx-auto rounded-full mb-6"></div>
-                <p class="text-stone-600 text-lg">
-                    W moim gabinecie łączę wiedzę medyczną z intuicją i głębokim zrozumieniem anatomii. Każdy pacjent to inna historia, którą czytam poprzez dotyk.
-                </p>
+    <!-- O BARTŁOMIEJU (BIO) -->
+    <section id="o-mnie" class="bg-bgLight py-20 lg:py-28 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+            
+            <!-- Zdjęcie Portretowe -->
+            <div class="lg:w-5/12 reveal">
+                 <!-- Placeholder: Wgraj portretowe zdjęcie -->
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Bartłomiej Jekiel" 
+                     class="w-full h-[600px] object-cover rounded-lg shadow-lg grayscale hover:grayscale-0 transition-all duration-500">
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="relative reveal">
-                     <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Osteopata przy pracy" class="rounded-xl shadow-lg w-full object-cover h-[400px]">
-                     <div class="absolute -bottom-6 -right-6 bg-sage-50 p-6 rounded-lg shadow-md max-w-xs hidden lg:block">
-                         <p class="italic text-stone-600 font-light text-sm">"Ciało posiada mechanizmy samoleczenia, osteopata jedynie pomaga je uruchomić."</p>
-                     </div>
+            <!-- Treść Bio -->
+            <div class="lg:w-7/12 reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">Bartłomiej Jekiel</h2>
+                <h3 class="text-xl text-accent font-medium mb-6">Certyfikowany Osteopata & Fizjoterapeuta</h3>
+                
+                <div class="space-y-4 text-gray-600 leading-loose">
+                    <p>
+                        Moja praca to pasja poszukiwania przyczyny problemu, a nie tylko leczenie jego objawów. Jako absolwent [Nazwa Uczelni - do uzupełnienia] oraz certyfikowany osteopata, łączę wiedzę medyczną z holistycznym spojrzeniem na organizm człowieka.
+                    </p>
+                    <p>
+                        W swoim gabinecie w Libiążu pomagam pacjentom w każdym wieku – od niemowląt zmagających się z kolkami, przez dorosłych cierpiących na bóle kręgosłupa, aż po seniorów pragnących zachować sprawność.
+                    </p>
+                    <p>
+                        Wierzę, że każdy pacjent wymaga indywidualnego podejścia. Podczas wizyty zawsze poświęcam czas na dokładny wywiad i zrozumienie historii Twojego ciała, aby dobrać najskuteczniejszą, a zarazem bezpieczną formę terapii.
+                    </p>
                 </div>
-                <div class="space-y-6 reveal delay-100">
-                    <h3 class="text-2xl font-medium text-stone-800">Mgr Piotr Nowak</h3>
-                    <p class="text-stone-600">
-                        Jestem certyfikowanym osteopatą i fizjoterapeutą z 10-letnim doświadczeniem. Ukończyłem 5-letnie studia podyplomowe z zakresu medycyny osteopatycznej.
+
+                <div class="mt-8 pt-8 border-t border-gray-300 flex flex-wrap gap-8">
+                    <div>
+                        <span class="block text-3xl font-bold text-primary">10+</span>
+                        <span class="text-sm text-gray-500">Lat doświadczenia</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-bold text-primary">1000+</span>
+                        <span class="text-sm text-gray-500">Wyleczonych pacjentów</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZESPÓŁ -->
+    <section id="zespol" class="py-20 lg:py-28 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">Nasz Zespół</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-8">Współpracuję z doświadczonymi specjalistami. <br><span class="text-accent font-medium">Kliknij na zdjęcie, aby dowiedzieć się więcej o specjaliście.</span></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Karta Członka Zespołu 1 (Bartłomiej) -->
+            <div class="group reveal cursor-pointer relative" onclick="openModal('bartlomiej')">
+                <div class="overflow-hidden rounded-xl mb-4 relative">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bartłomiej Jekiel" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300 flex items-center justify-center">
+                         <span class="opacity-0 group-hover:opacity-100 bg-white text-primary px-4 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Zobacz profil</span>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary">Bartłomiej Jekiel</h3>
+                <p class="text-accent text-sm font-medium mb-2">Główny Osteopata</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Specjalista terapii manualnej i osteopatii wisceralnej.</p>
+            </div>
+
+            <!-- Karta Członka Zespołu 2 -->
+            <div class="group reveal delay-100 cursor-pointer relative" onclick="openModal('anna')">
+                <div class="overflow-hidden rounded-xl mb-4 relative">
+                    <!-- Placeholder: Zdjęcie kobiety -->
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Anna Kowalska" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white text-primary px-4 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Zobacz profil</span>
+                   </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary">Anna Kowalska</h3>
+                <p class="text-accent text-sm font-medium mb-2">Fizjoterapeutka dziecięca</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Ekspertka w rehabilitacji niemowląt i wad postawy.</p>
+            </div>
+
+            <!-- Karta Członka Zespołu 3 -->
+            <div class="group reveal delay-200 cursor-pointer relative" onclick="openModal('piotr')">
+                <div class="overflow-hidden rounded-xl mb-4 relative">
+                    <!-- Placeholder: Zdjęcie mężczyzny -->
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Piotr Nowak" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white text-primary px-4 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Zobacz profil</span>
+                   </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary">Piotr Nowak</h3>
+                <p class="text-accent text-sm font-medium mb-2">Masażysta</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Specjalizuje się w masażu tkanek głębokich i powięziowym.</p>
+            </div>
+
+            <!-- Karta Członka Zespołu 4 -->
+            <div class="group reveal delay-300 cursor-pointer relative" onclick="openModal('maria')">
+                <div class="overflow-hidden rounded-xl mb-4 relative">
+                     <!-- Placeholder: Zdjęcie kobiety -->
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Maria Wiśniewska" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300 flex items-center justify-center">
+                        <span class="opacity-0 group-hover:opacity-100 bg-white text-primary px-4 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Zobacz profil</span>
+                   </div>
+                </div>
+                <h3 class="text-xl font-bold text-primary">Maria Wiśniewska</h3>
+                <p class="text-accent text-sm font-medium mb-2">Rejestracja / Opiekun Pacjenta</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Zadba o terminy Twoich wizyt i komfort w gabinecie.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section id="oferta" class="bg-bgLight py-20 lg:py-28 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">Zakres Pomocy</h2>
+                <p class="text-gray-600">Dobieramy metody terapii indywidualnie do Twoich potrzeb.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Karta Oferty: Osteopatia -->
+                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow reveal">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-primary">
+                        <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-4">Osteopatia</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Manualna metoda diagnozowania i leczenia zaburzeń ruchomości stawów i tkanek. Skupiamy się na odnalezieniu pierwotnej przyczyny bólu.
                     </p>
-                    <p class="text-stone-600">
-                        Moją filozofią jest leczenie przyczynowe. Nie skupiam się jedynie na bolącym miejscu, ale analizuję całe ciało – od stóp po napięcia w obrębie czaszki. Wierzę, że spokój i zrozumienie problemu to połowa sukcesu w terapii.
+                    <ul class="space-y-3 text-gray-500 mb-8">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Bóle kręgosłupa i głowy</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Problemy trawienne (refluks, wzdęcia)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Stany po urazach i wypadkach</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Osteopatia pediatryczna (kolki, asymetrie)</li>
+                    </ul>
+                </div>
+
+                <!-- Karta Oferty: Rehabilitacja -->
+                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow reveal delay-100">
+                    <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center mb-6 text-accent">
+                        <i class="fa-solid fa-person-walking text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-4">Rehabilitacja</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Kompleksowe usprawnianie ruchowe po operacjach ortopedycznych oraz w przewlekłych dolegliwościach bólowych układu ruchu.
                     </p>
-                    <ul class="space-y-3 mt-4">
-                        <li class="flex items-center text-stone-600">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-sage-500 mr-3"></i> Dyplomowany Osteopata (D.O.)
-                        </li>
-                        <li class="flex items-center text-stone-600">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-sage-500 mr-3"></i> Członek Towarzystwa Osteopatów Polskich
-                        </li>
-                        <li class="flex items-center text-stone-600">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-sage-500 mr-3"></i> Tysiące przeprowadzonych terapii
-                        </li>
+                    <ul class="space-y-3 text-gray-500 mb-8">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Rehabilitacja pooperacyjna</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Korekcja wad postawy</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Rwa kulszowa i dyskopatie</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Trening medyczny</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CZYM JEST OSTEOPATIA -->
-    <section id="osteopatia" class="section-padding bg-sage-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl font-light text-stone-900 mb-4">Czym jest osteopatia?</h2>
-                <p class="max-w-2xl mx-auto text-stone-600">
-                    To system leczenia manualnego, który postrzega człowieka jako całość. Różni się od masażu czy klasycznej fizjoterapii tym, że szuka powiązań między odległymi częściami ciała.
+    <!-- PIERWSZA WIZYTA -->
+    <section id="pierwsza-wizyta" class="py-20 lg:py-28 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2 reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">Pierwsza wizyta</h2>
+                <p class="text-gray-600 mb-8 text-lg">
+                    Rozumiem, że wizyta u specjalisty może wiązać się ze stresem. Zobacz, jak wygląda proces, abyś czuł się pewnie i bezpiecznie.
                 </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 reveal">
-                    <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-600">
-                        <i data-lucide="activity" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-medium text-stone-800 mb-3">Leczenie przyczyn</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed">
-                        Ból pleców może pochodzić od stopy, a ból głowy od napięć w jamie brzusznej. Szukam pierwotnego źródła problemu.
-                    </p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 reveal delay-100">
-                    <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-600">
-                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-medium text-stone-800 mb-3">Delikatność</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed">
-                        Techniki osteopatyczne są często bardzo subtelne, bezpieczne i bezbolesne, odpowiednie nawet dla noworodków i seniorów.
-                    </p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 reveal delay-200">
-                    <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-600">
-                        <i data-lucide="smile" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-medium text-stone-800 mb-3">Samoleczenie</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed">
-                        Celem terapii jest uwolnienie blokad (napięć), aby organizm mógł wykorzystać swoje naturalne zdolności do regeneracji.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ZAKRES USŁUG -->
-    <section id="uslugi" class="section-padding bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <span class="text-sage-600 font-semibold tracking-wider text-xs uppercase">Oferta</span>
-                <h2 class="text-3xl font-light text-stone-900 mt-2">W czym mogę pomóc?</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service 1 -->
-                <div class="group border border-stone-100 p-8 rounded-2xl hover:border-sage-200 hover:bg-sage-50/30 transition-all duration-300 reveal">
-                    <i data-lucide="user" class="w-8 h-8 text-sage-600 mb-4 stroke-1"></i>
-                    <h3 class="text-lg font-semibold text-stone-800 mb-2">Osteopatia dorosłych</h3>
-                    <p class="text-stone-600 text-sm">Bóle kręgosłupa, dyskopatie, rwa kulszowa, bóle stawów obwodowych.</p>
-                </div>
                 
-                <!-- Service 2 -->
-                <div class="group border border-stone-100 p-8 rounded-2xl hover:border-sage-200 hover:bg-sage-50/30 transition-all duration-300 reveal delay-100">
-                    <i data-lucide="baby" class="w-8 h-8 text-sage-600 mb-4 stroke-1"></i>
-                    <h3 class="text-lg font-semibold text-stone-800 mb-2">Osteopatia pediatryczna</h3>
-                    <p class="text-stone-600 text-sm">Kolki, refluks, asymetrie ułożeniowe, zaburzenia snu u niemowląt.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="group border border-stone-100 p-8 rounded-2xl hover:border-sage-200 hover:bg-sage-50/30 transition-all duration-300 reveal delay-200">
-                    <i data-lucide="brain" class="w-8 h-8 text-sage-600 mb-4 stroke-1"></i>
-                    <h3 class="text-lg font-semibold text-stone-800 mb-2">Bóle głowy i migreny</h3>
-                    <p class="text-stone-600 text-sm">Napięciowe bóle głowy, migreny, zawroty głowy, szumy uszne.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="group border border-stone-100 p-8 rounded-2xl hover:border-sage-200 hover:bg-sage-50/30 transition-all duration-300 reveal">
-                    <i data-lucide="utensils" class="w-8 h-8 text-sage-600 mb-4 stroke-1"></i>
-                    <h3 class="text-lg font-semibold text-stone-800 mb-2">Osteopatia wisceralna</h3>
-                    <p class="text-stone-600 text-sm">Problemy trawienne, zgaga, wzdęcia, zespół jelita drażliwego (IBS).</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="group border border-stone-100 p-8 rounded-2xl hover:border-sage-200 hover:bg-sage-50/30 transition-all duration-300 reveal delay-100">
-                    <i data-lucide="wind" class="w-8 h-8 text-sage-600 mb-4 stroke-1"></i>
-                    <h3 class="text-lg font-semibold text-stone-800 mb-2">Stres i psychosomatyka</h3>
-                    <p class="text-stone-600 text-sm">Stany napięciowe, zaburzenia snu, przewlekłe zmęczenie.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="group border border-stone-100 p-8 rounded-2xl hover:border-sage-200 hover:bg-sage-50/30 transition-all duration-300 reveal delay-200">
-                    <i data-lucide="heart-pulse" class="w-8 h-8 text-sage-600 mb-4 stroke-1"></i>
-                    <h3 class="text-lg font-semibold text-stone-800 mb-2">Stany po urazach</h3>
-                    <p class="text-stone-600 text-sm">Rehabilitacja po skręceniach, złamaniach, wypadkach komunikacyjnych.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCES WIZYTY -->
-    <section id="wizyta" class="section-padding bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl font-light text-stone-900">Jak wygląda wizyta?</h2>
-                <p class="text-stone-600 mt-2">Dbam o Twój komfort i poczucie bezpieczeństwa na każdym etapie.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                <!-- Connecting line (desktop only) -->
-                <div class="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-stone-200 -z-10 transform translate-y-4"></div>
-
-                <!-- Step 1 -->
-                <div class="text-center reveal">
-                    <div class="w-16 h-16 bg-white border-2 border-sage-500 text-sage-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-sm">1</div>
-                    <h4 class="text-lg font-medium text-stone-800 mb-2">Wywiad</h4>
-                    <p class="text-sm text-stone-600">Szczegółowa rozmowa o Twoich dolegliwościach, historii chorób i stylu życia.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="text-center reveal delay-100">
-                    <div class="w-16 h-16 bg-white border-2 border-sage-500 text-sage-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-sm">2</div>
-                    <h4 class="text-lg font-medium text-stone-800 mb-2">Badanie</h4>
-                    <p class="text-sm text-stone-600">Badanie manualne postawy, ruchomości stawów i napięć tkankowych.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="text-center reveal delay-200">
-                    <div class="w-16 h-16 bg-sage-600 border-2 border-sage-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-lg">3</div>
-                    <h4 class="text-lg font-medium text-stone-800 mb-2">Terapia</h4>
-                    <p class="text-sm text-stone-600">Zastosowanie bezpiecznych technik manualnych w celu usunięcia blokad.</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="text-center reveal delay-300">
-                    <div class="w-16 h-16 bg-white border-2 border-sage-500 text-sage-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 shadow-sm">4</div>
-                    <h4 class="text-lg font-medium text-stone-800 mb-2">Zalecenia</h4>
-                    <p class="text-sm text-stone-600">Porady dotyczące ćwiczeń, ergonomii pracy lub diety, by utrzymać efekt.</p>
+                <div class="space-y-8">
+                    <!-- Krok 1 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Wywiad medyczny</h4>
+                            <p class="text-gray-500 mt-1">Porozmawiamy o Twoich dolegliwościach, historii chorób i stylu życia. Jeśli posiadasz wyniki badań (RTG, MRI), zabierz je ze sobą.</p>
+                        </div>
+                    </div>
+                    <!-- Krok 2 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white border-2 border-accent text-accent flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Badanie funkcjonalne</h4>
+                            <p class="text-gray-500 mt-1">Przeprowadzę testy ruchowe i palpacyjne, aby zlokalizować źródło problemu. Proszę o zabranie wygodnego stroju.</p>
+                        </div>
+                    </div>
+                    <!-- Krok 3 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white border-2 border-accent text-accent flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Terapia wstępna</h4>
+                            <p class="text-gray-500 mt-1">Już na pierwszej wizycie wykonuję zabiegi manualne, aby przynieść ulgę w bólu.</p>
+                        </div>
+                    </div>
+                    <!-- Krok 4 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white border-2 border-accent text-accent flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Plan leczenia</h4>
+                            <p class="text-gray-500 mt-1">Ustalimy cel terapii, szacowaną liczbę wizyt oraz zalecenia do domu.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="mt-12 text-center bg-white p-6 rounded-xl shadow-sm border border-stone-100 max-w-2xl mx-auto reveal">
-                <i data-lucide="info" class="inline-block w-5 h-5 text-sage-600 mb-2"></i>
-                <p class="text-stone-600 text-sm">
-                    Proszę o zabranie ze sobą aktualnych badań obrazowych (RTG, MRI, TK) oraz wygodnego stroju niekrępującego ruchów.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- OPINIE -->
-    <section id="opinie" class="section-padding bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-light text-center text-stone-900 mb-16 reveal">Co mówią pacjenci</h2>
-            
-            <div class="flex flex-wrap md:flex-nowrap gap-6 justify-center">
-                <!-- Review 1 -->
-                <div class="bg-stone-50 p-8 rounded-2xl w-full md:w-1/3 soft-shadow reveal">
-                    <div class="flex text-yellow-400 mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-stone-600 italic mb-6 text-sm">"Trafiłam z polecenia z migrenami, które męczyły mnie od lat. Po trzech wizytach częstotliwość ataków spadła niemal do zera. Pan Piotr to oaza spokoju."</p>
-                    <div class="font-medium text-stone-800 text-sm">– Anna, 34 lata</div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-stone-50 p-8 rounded-2xl w-full md:w-1/3 soft-shadow reveal delay-100">
-                    <div class="flex text-yellow-400 mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-stone-600 italic mb-6 text-sm">"Profesjonalne podejście do niemowlaka. Synek przestał płakać przy jedzeniu, a my w końcu śpimy w nocy. Bardzo dziękujemy!"</p>
-                    <div class="font-medium text-stone-800 text-sm">– Marek, tata 3-miesięcznego Jasia</div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-stone-50 p-8 rounded-2xl w-full md:w-1/3 soft-shadow reveal delay-200">
-                    <div class="flex text-yellow-400 mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-stone-600 italic mb-6 text-sm">"Bardzo polecam. Ból kręgosłupa lędźwiowego zniknął po kilku sesjach. Co ważne, dostałem zestaw prostych ćwiczeń do domu."</p>
-                    <div class="font-medium text-stone-800 text-sm">– Krzysztof, 45 lat</div>
+            <div class="lg:w-1/2 bg-bgLight p-8 rounded-2xl reveal delay-100 border border-gray-100 shadow-sm">
+                <h3 class="text-2xl font-bold text-primary mb-4">Informacje praktyczne</h3>
+                <ul class="space-y-4">
+                    <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                        <span class="text-gray-600">Czas trwania wizyty</span>
+                        <span class="font-bold text-primary">45 - 60 min</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                        <span class="text-gray-600">Rejestracja</span>
+                        <span class="font-bold text-primary">Telefoniczna / Online</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                        <span class="text-gray-600">Płatność</span>
+                        <span class="font-bold text-primary">Gotówka / Karta / BLIK</span>
+                    </li>
+                    <li class="flex justify-between items-center pt-2">
+                        <span class="text-gray-600">Dostępność</span>
+                        <span class="font-bold text-primary">Pon - Pt</span>
+                    </li>
+                </ul>
+                <div class="mt-8 p-4 bg-teal-50 text-teal-800 rounded-lg text-sm border border-teal-100">
+                    <i class="fa-solid fa-info-circle mr-2"></i> Nie musisz mieć skierowania od lekarza, aby umówić się na wizytę.
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CENNIK -->
-    <section id="cennik" class="section-padding bg-sage-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-light text-center text-stone-900 mb-12 reveal">Cennik wizyt</h2>
-            
-            <div class="bg-white rounded-2xl shadow-sm overflow-hidden reveal">
-                <div class="p-6 md:p-8 flex flex-col md:flex-row justify-between items-center border-b border-stone-100">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <h3 class="text-lg font-semibold text-stone-800">Pierwsza wizyta (konsultacja + terapia)</h3>
-                        <p class="text-sm text-stone-500">Czas trwania: ok. 50-60 min</p>
-                    </div>
-                    <div class="text-2xl font-light text-sage-700">200 PLN</div>
-                </div>
-                
-                <div class="p-6 md:p-8 flex flex-col md:flex-row justify-between items-center border-b border-stone-100">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <h3 class="text-lg font-semibold text-stone-800">Kolejna wizyta (terapia)</h3>
-                        <p class="text-sm text-stone-500">Czas trwania: ok. 45 min</p>
-                    </div>
-                    <div class="text-2xl font-light text-sage-700">180 PLN</div>
-                </div>
+    <section id="cennik" class="bg-bgLight py-20 lg:py-28 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">Cennik usług</h2>
+                <p class="text-gray-600">Przejrzyste zasady współpracy.</p>
+            </div>
 
-                <div class="p-6 md:p-8 flex flex-col md:flex-row justify-between items-center">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <h3 class="text-lg font-semibold text-stone-800">Wizyta pediatryczna (dzieci)</h3>
-                        <p class="text-sm text-stone-500">Czas trwania: ok. 45 min</p>
-                    </div>
-                    <div class="text-2xl font-light text-sage-700">180 PLN</div>
-                </div>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden reveal">
+                <table class="w-full text-left border-collapse">
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-medium text-primary">Konsultacja osteopatyczna (Dorośli)</td>
+                            <td class="p-6 text-right font-bold text-accent text-lg">200 PLN</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-medium text-primary">Osteopatia pediatryczna (Dzieci)</td>
+                            <td class="p-6 text-right font-bold text-accent text-lg">180 PLN</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-medium text-primary">Terapia manualna / Rehabilitacja</td>
+                            <td class="p-6 text-right font-bold text-accent text-lg">160 PLN</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-medium text-primary">Kinesiotaping (jako dodatek)</td>
+                            <td class="p-6 text-right font-bold text-accent text-lg">30 PLN</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            
-            <div class="text-center mt-8 text-stone-500 text-sm reveal">
-                <p>Płatność gotówką lub kartą. Możliwość odwołania wizyty bezpłatnie do 24h przed terminem.</p>
-            </div>
+            <p class="text-xs text-gray-400 mt-4 text-center">* Podany cennik ma charakter orientacyjny i może ulec zmianie. Szczegółowy kosztorys przedstawiany jest przed rozpoczęciem terapii.</p>
         </div>
     </section>
 
     <!-- KONTAKT -->
-    <section id="kontakt" class="section-padding bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-                
-                <!-- Info Column -->
-                <div class="reveal">
-                    <span class="text-sage-600 font-semibold tracking-wider text-xs uppercase">Kontakt</span>
-                    <h2 class="text-3xl font-light text-stone-900 mt-2 mb-8">Umów się na wizytę</h2>
-                    <p class="text-stone-600 mb-10">
-                        Masz pytania? Nie jesteś pewien, czy osteopatia jest dla Ciebie? Zadzwoń lub napisz. Jeśli nie odbieram, prawdopodobnie prowadzę terapię – oddzwonię najszybciej jak to możliwe.
-                    </p>
+    <section id="kontakt" class="py-20 lg:py-28 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <!-- Dane kontaktowe -->
+            <div class="reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-8">Umów wizytę w Libiążu</h2>
+                <p class="text-gray-600 mb-10">
+                    Masz pytania lub chcesz zarezerwować termin? Skontaktuj się telefonicznie lub skorzystaj z formularza.
+                </p>
 
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-sage-600 mt-1"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-medium text-stone-800">Adres</h4>
-                                <p class="text-stone-600">ul. Zdrowa 15/4<br>00-001 Warszawa</p>
-                            </div>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-accent mr-4 flex-shrink-0">
+                            <i class="fa-solid fa-phone"></i>
                         </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <i data-lucide="phone" class="w-6 h-6 text-sage-600 mt-1"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-medium text-stone-800">Telefon</h4>
-                                <a href="tel:+48123456789" class="text-stone-600 hover:text-sage-600 transition-colors block text-lg font-light">+48 123 456 789</a>
-                                <p class="text-xs text-stone-400 mt-1">Rejestracja czynna: Pn-Pt 9:00 - 18:00</p>
-                            </div>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Telefon</p>
+                            <a href="tel:+48123456789" class="text-xl font-bold text-primary hover:text-accent transition-colors">+48 123 456 789</a>
+                            <p class="text-sm text-gray-400 mt-1">Pon - Pt: 8:00 - 20:00</p>
                         </div>
+                    </div>
 
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <i data-lucide="mail" class="w-6 h-6 text-sage-600 mt-1"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-medium text-stone-800">Email</h4>
-                                <a href="mailto:kontakt@osteobalance.pl" class="text-stone-600 hover:text-sage-600 transition-colors">kontakt@osteobalance.pl</a>
-                            </div>
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-accent mr-4 flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Email</p>
+                            <a href="mailto:kontakt@jekiel-osteopata.pl" class="text-lg font-medium text-primary hover:text-accent transition-colors">kontakt@jekiel-osteopata.pl</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-accent mr-4 flex-shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Adres Gabinetu</p>
+                            <p class="text-lg font-medium text-primary">ul. Przykładowa 12/4<br>32-590 Libiąż</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Form Column -->
-                <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 shadow-sm reveal delay-100">
-                    <form class="space-y-6">
+                <!-- Social Media -->
+                <div class="mt-12 flex space-x-4">
+                    <a href="#" class="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-accent hover:border-accent hover:text-white transition-all">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-accent hover:border-accent hover:text-white transition-all">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formularz i Mapa -->
+            <div class="space-y-8 reveal delay-100">
+                <!-- Prosty Formularz -->
+                <form onsubmit="event.preventDefault(); alert('Dziękujemy za wiadomość! Skontaktujemy się wkrótce.');" class="bg-white p-8 shadow-xl rounded-2xl border border-gray-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-stone-700 mb-1">Imię i nazwisko</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border-stone-200 border focus:border-sage-500 focus:ring-1 focus:ring-sage-500 outline-none transition-all bg-white" placeholder="Jan Kowalski">
+                            <label class="block text-sm text-gray-500 mb-1">Imię i nazwisko</label>
+                            <input type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-accent transition-colors">
                         </div>
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-stone-700 mb-1">Numer telefonu</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border-stone-200 border focus:border-sage-500 focus:ring-1 focus:ring-sage-500 outline-none transition-all bg-white" placeholder="+48 000 000 000">
+                            <label class="block text-sm text-gray-500 mb-1">Numer telefonu</label>
+                            <input type="tel" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-accent transition-colors">
                         </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-stone-700 mb-1">Wiadomość (opcjonalnie)</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border-stone-200 border focus:border-sage-500 focus:ring-1 focus:ring-sage-500 outline-none transition-all bg-white" placeholder="Opisz krótko problem..."></textarea>
-                        </div>
-                        <button type="button" onclick="alert('Dziękujemy za wiadomość! W wersji produkcyjnej formularz zostanie wysłany.')" class="w-full bg-sage-600 text-white font-medium py-3.5 rounded-lg hover:bg-sage-700 transition-all shadow-md hover:shadow-lg">
-                            Wyślij wiadomość
-                        </button>
-                        <p class="text-xs text-stone-400 text-center mt-4">
-                            Wysyłając formularz, akceptujesz politykę prywatności.
-                        </p>
-                    </form>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm text-gray-500 mb-1">Wiadomość (opcjonalnie)</label>
+                        <textarea rows="3" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-accent transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                        Wyślij wiadomość
+                    </button>
+                </form>
+
+                <!-- Mapa Google (Placeholder) -->
+                <div class="map-container h-64 bg-gray-200 rounded-2xl overflow-hidden shadow-inner">
+                    <!-- Link do mapy Libiąża - wklejony przykładowy iframe Google Maps -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41164.73336345638!2d19.280457685648834!3d50.10645609462217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471694f8e5f8f8ef%3A0x400a40bc973a9f99!2sLibi%C4%85%C5%BC!5e0!3m2!1spl!2spl!4v1684000000000!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="#" class="text-2xl font-light tracking-wide text-white mb-4 block">
-                        Osteo<span class="font-bold text-sage-500">Balance</span>.
-                    </a>
-                    <p class="text-sm max-w-xs leading-relaxed">
-                        Profesjonalny gabinet osteopatii i terapii manualnej. Pomagamy wrócić do zdrowia w zgodzie z naturą.
-                    </p>
-                </div>
-                <div>
-                    <h5 class="text-white font-medium mb-4">Nawigacja</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#o-mnie" class="hover:text-sage-400 transition-colors">O gabinecie</a></li>
-                        <li><a href="#uslugi" class="hover:text-sage-400 transition-colors">Usługi</a></li>
-                        <li><a href="#cennik" class="hover:text-sage-400 transition-colors">Cennik</a></li>
-                        <li><a href="#kontakt" class="hover:text-sage-400 transition-colors">Kontakt</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white font-medium mb-4">Godziny otwarcia</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex justify-between"><span>Pon - Śr:</span> <span class="text-white">09:00 - 19:00</span></li>
-                        <li class="flex justify-between"><span>Czw - Pt:</span> <span class="text-white">09:00 - 15:00</span></li>
-                        <li class="flex justify-between"><span>Sobota:</span> <span class="text-white">Na telefon</span></li>
-                    </ul>
-                </div>
+    <!-- STOPKA -->
+    <footer class="bg-primary text-white py-12 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <p class="font-bold text-lg">Bartłomiej Jekiel</p>
+                <p class="text-gray-400 text-sm">Gabinet Osteopatii i Rehabilitacji</p>
             </div>
-            <div class="border-t border-stone-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
-                <p>&copy; 2024 OsteoBalance. Wszelkie prawa zastrzeżone.</p>
-                <div class="mt-4 md:mt-0 space-x-4">
-                    <a href="#" class="hover:text-white transition-colors">Polityka Prywatności</a>
-                    <a href="#" class="hover:text-white transition-colors">Regulamin</a>
-                </div>
+            
+            <div class="text-sm text-gray-400 text-center md:text-right">
+                <p>&copy; 2024 Bartłomiej Jekiel. Wszelkie prawa zastrzeżone.</p>
+                <p class="mt-1">Projekt strony: UX Designer</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Inicjalizacja ikon Lucide
-        lucide.createIcons();
+    <!-- MODAL (Okno szczegółów zespołu) -->
+    <div id="team-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Tło / Backdrop -->
+        <div class="absolute inset-0 bg-gray-900/70 transition-opacity backdrop-blur-sm" onclick="closeModal()"></div>
+    
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Panel modala -->
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-3xl border border-gray-100">
+                    
+                    <!-- Przycisk Zamknięcia -->
+                    <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:text-red-500 hover:bg-white transition-all shadow-sm">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+    
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Zdjęcie w modalu -->
+                        <div class="md:w-5/12 relative">
+                             <img id="modal-img" src="" alt="" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        
+                        <!-- Treść w modalu -->
+                        <div class="md:w-7/12 p-8 modal-scroll max-h-[80vh] overflow-y-auto">
+                            <p id="modal-role" class="text-accent text-sm font-bold uppercase tracking-wide mb-2">Role</p>
+                            <h3 id="modal-name" class="text-3xl font-bold text-primary mb-4">Name</h3>
+                            
+                            <div class="space-y-4 text-gray-600 mb-6 leading-relaxed">
+                                <p id="modal-bio">Description goes here...</p>
+                            </div>
+    
+                            <div class="border-t border-gray-100 pt-6">
+                                <h4 class="font-bold text-primary mb-3 flex items-center">
+                                    <i class="fa-solid fa-certificate text-accent mr-2"></i> Kursy i Certyfikaty
+                                </h4>
+                                <ul id="modal-courses" class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+                                    <!-- Lista generowana JS -->
+                                </ul>
+                            </div>
+    
+                            <div class="mt-8">
+                                <a href="#kontakt" onclick="closeModal()" class="inline-block w-full text-center bg-primary text-white font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                                    Umów wizytę u tego specjalisty
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Mobile Menu Toggle
+    <!-- JAVASCRIPT: Funkcjonalność -->
+    <script>
+        // 1. Obsługa Menu Mobile
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
         });
 
-        // Zamknij menu mobilne po kliknięciu w link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
+        // Ukryj menu po kliknięciu w link (na mobile)
+        menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
+                menu.classList.remove('flex');
             });
         });
 
-        // Scroll Animations (Intersection Observer)
+        // 2. Animacja paska nawigacji przy przewijaniu
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('shadow-md', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // 3. Animacje wejścia sekcji (Scroll Reveal)
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
@@ -624,6 +620,107 @@
 
         document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
+        });
+
+        // 4. OBSŁUGA MODALA ZESPOŁU
+        
+        // Baza danych pracowników (Możesz tu edytować opisy i kursy)
+        const teamData = {
+            'bartlomiej': {
+                name: 'Bartłomiej Jekiel',
+                role: 'Główny Osteopata',
+                img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                bio: 'Absolwent renomowanej szkoły osteopatii z ponad 10-letnim doświadczeniem klinicznym. Specjalizuje się w trudnych przypadkach bólowych kręgosłupa oraz dolegliwościach wisceralnych (trzewnych). Jego podejście opiera się na głębokiej analizie biomechaniki ciała pacjenta.',
+                courses: [
+                    'Medycyna Osteopatyczna - 5-letnie studia podyplomowe',
+                    'Terapia Wisceralna - Poziom Zaawansowany',
+                    'Manipulacje Krótkodźwigniowe HVLA',
+                    'Osteopatia w Pediatrii',
+                    'Diagnostyka różnicowa w terapii manualnej'
+                ]
+            },
+            'anna': {
+                name: 'Anna Kowalska',
+                role: 'Fizjoterapeutka Dziecięca',
+                img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                bio: 'Ciepła i empatyczna terapeutka z niezwykłym podejściem do najmłodszych pacjentów. Zajmuje się diagnostyką neurorozwojową niemowląt oraz korekcją wad postawy u dzieci w wieku szkolnym. Prowadzi również instruktaże pielęgnacyjne dla rodziców.',
+                courses: [
+                    'NDT Bobath dla dzieci',
+                    'Diagnostyka metodą Prechtla',
+                    'Trójpłaszczyznowa manualna terapia stóp',
+                    'Kinesiotaping w pediatrii',
+                    'Integracja Sensoryczna (SI) - I stopień'
+                ]
+            },
+            'piotr': {
+                name: 'Piotr Nowak',
+                role: 'Masażysta / Terapeuta Powięziowy',
+                img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                bio: 'Specjalista od pracy z tkankami miękkimi. Jego masaże to nie tylko relaks, ale przede wszystkim skuteczna walka z napięciami stresowymi i przeciążeniowymi. Idealny wybór dla osób pracujących biurowo oraz sportowców.',
+                courses: [
+                    'Masaż Tkanek Głębokich (Deep Tissue)',
+                    'Rozluźnianie Mięśniowo-Powięziowe',
+                    'Masaż Sportowy z elementami odnowy biologicznej',
+                    'Anatomia Palpacyjna',
+                    'Pinoterapia'
+                ]
+            },
+            'maria': {
+                name: 'Maria Wiśniewska',
+                role: 'Rejestracja / Opiekun Pacjenta',
+                img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                bio: 'Dobry duch gabinetu. To ona wita Państwa uśmiechem i dba o sprawną organizację wizyt. Zawsze służy pomocą w doborze odpowiedniego specjalisty oraz terminu. Studiuje psychologię, co pomaga jej w doskonałym kontakcie z pacjentami.',
+                courses: [
+                    'Profesjonalna Obsługa Pacjenta w Placówce Medycznej',
+                    'Zarządzanie czasem i organizacja pracy',
+                    'Komunikacja interpersonalna',
+                    'Pierwsza Pomoc Przedmedyczna'
+                ]
+            }
+        };
+
+        const modal = document.getElementById('team-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalName = document.getElementById('modal-name');
+        const modalRole = document.getElementById('modal-role');
+        const modalBio = document.getElementById('modal-bio');
+        const modalCourses = document.getElementById('modal-courses');
+
+        function openModal(memberId) {
+            const member = teamData[memberId];
+            if (!member) return;
+
+            // Wypełnij dane
+            modalImg.src = member.img;
+            modalName.textContent = member.name;
+            modalRole.textContent = member.role;
+            modalBio.textContent = member.bio;
+
+            // Wyczyść i wypełnij listę kursów
+            modalCourses.innerHTML = '';
+            member.courses.forEach(course => {
+                const li = document.createElement('li');
+                li.textContent = course;
+                modalCourses.appendChild(li);
+            });
+
+            // Pokaż modal
+            modal.classList.remove('hidden');
+            // Zablokuj przewijanie tła
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            // Odblokuj przewijanie tła
+            document.body.style.overflow = 'auto';
+        }
+
+        // Zamknij modal klawiszem ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
         });
     </script>
 </body>
