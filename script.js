@@ -94,17 +94,38 @@ const teamData = {
         name: 'Paulina Kowalska-Giermek',
         role: 'Fizjoterapeuta Dziecięcy',
         img: 'img/team/Paulina.jpg',
-        bio: 'Absolwentka Akademii Górnośląskiej oraz Śląskiego Uniwersytetu Medycznego w Katowicach oraz studiów podyplomowych Neurorozwojowa Terapia Dzieci z Dysfunkcjami Układu Nerwowego. Dyplomowany terapeuta koncepcji NDT, Bobath, PNF, SI. Uczestniczka wielu szkoleń, m.in.: Osteopatia w pediatrii, Trójpłaszczyznowa Terapia Manualna Wad Stóp u dzieci, Fizjoterapia Neonatologiczna, Skoliozy - diagnostyka i postępowanie fizjoterapeutyczne, Wczesne Wspomaganie Rozwoju - ocena rozwoju dziecka do 2. roku życia, Specyfika usprawniania dzieci z różnymi formami hipotonii posturalnej ze szczególnym uwzględnieniem niespastycznych postaci MPD, Metoda Ruchu Rozwijającego wg Weroniki Sherborne, Wybiorczość pokarmowa o podłożu sensoryczno-motorycznym, Rozwojowa dysplazja stawu biodrowego, dysfagia czy zaburzenia karmienia, Strategie Terapeutyczne w rehabilitacji małego dziecka.',
+        bio: 'Dyplomowany Terapeuta koncepcji NDT Bobath dla Dzieci , PNF , SI oraz PIMT <br>• Absolwentka Akademii Górnośląskiej dawniej Górnośląska Wyższa Szkoła Handlowa( Licencjat z Fizjoterapii) rok 2010<br>• Absolwentka Śląskiego Uniwersytetu Medycznego w Katowicach ( Magister Fizjoterapii) rok 2012<br>• Absolwentka Studiów Podyplomowych Akademii Górnośląskiej dawniej Górnośląska Wyższa Szkoła Handlowa - Neurorozwojowa Terapia Dzieci z Dysfunkcjami Układu Nerwowego rok 2014 pod kierunkiem Dr hab. Małgorzata Matyja , Dr Anna Gogola<br>• Uzyskanie tytułu Nauczyciela Kontraktowego - rok 2013',
         courses: [
-            'NDT Bobath dla dzieci',
-            'Diagnostyka metodą Prechtla',
-            'Trójpłaszczyznowa manualna terapia stóp',
-            'Kinesiotaping w pediatrii',
-            'Integracja Sensoryczna (SI) - I stopień'
+            'Ćwiczenia oporowe i równoważne z zastosowaniem przyborów Thera-Band rok 2010, prowadzący Mgr Józef Spałek',
+            'PNF - Proprioceptywna Nerwowo- Mięśniowa Facilitacja - Tytuł Dyplomowanego Terapeuty PNF rok 2012, prowadzący Mgr Aleksander Lizak',
+            'Neurobiologiczne Podstawy Integracji Sensorycznej - I stopień Integracji Sensorycznej , rok 2014, prowadzący Mgr Magdalena Okrzasa, Mgr Małgorzata Kamiennik',
+            'Wczesne Wspomaganie Rozwoju - ocena rozwoju dziecka do 2-go roku życia rok 2017 prowadzący Dr Alicja Salwach',
+            'Specyfika usprawniania dzieci z różnymi formami hipotonii posturalnej ze szczególnym uwzględnieniem niespastycznych postaci MPD rok 2017 , prowadzący Dr Anna Gogola',
+            'Skoliozy - diagnostyka i postępowanie fizjoterapeutyczne rok 2018, prowadzący Dr n.med. Piotr Kwiatkowski',
+            'Fizjoterapia Neonatologiczna rok 2020, prowadzący Mgr Justyna Niedźwiecka',
+            'Ocena funkcjonalna i prowadzenie dokumentacji medycznej dla pacjentów w wieku rozwojowym rok 2021, prowadzący Dr n.med. Tomasz Łosień ( szkolenie KIF)',
+            'Osteopatia w Pediatrii rok 2021, prowadzący Pediatric Osteopathy Sarah Bayley',
+            'Terapia Integracji Sensorycznej - II stopień - Tytuł Terapeuty Integracji Sensorycznej - rok 2021 , prowadzący Ewa Romanik, Jolanta Kazanowska',
+            'Wybiórczość pokarmowa o podłożu sensoryczno- motorycznym rok 2021, prowadzący Mgr Marta Baj -Lieder',
+            'Trójpłaszczyznowa Terapia Manualna Wad Stóp u Dzieci na podstawach neurofizjologicznych - metoda „Zukunft- Huber” rok 2022 , prowadzący Mgr Sylwia Lizak',
+            'Metoda Ruchu Rozwijającego wg Weroniki Sherborne',
+            'Rozwojowa Dysplazja stawu biodrowego - rok 2022 , prowadzący Dr n.med. Michał Rżany D.O',
+            'Rurka Tracheostomijna - wskazania dla terapeutów, rok 2022 , prowadzący Mgr Tatiana Lewicka',
+            'Dysfagia czy zaburzenia karmienia rok 2022, prowadzący Dr Ewa Winnicka',
+            'Zastosowanie Technik Powięziowych w Pediatrii - cz I - rok 2022 , prowadzący Dr Jarosław Ciechmski cz II - rok 2022 - prowadzący Dr Jarosław Ciechomski D.O',
+            'Terapia Neurorozwojowa NDT - Bobath dla dzieci - Tytuł Terapeuty Metody Ndt Bobath dla Dzieci rok 2022, prowadzący Mgr Robert Giezek, Dr Małgorzata Szmurło, Mgr Katarzyna Padula, Foteini Zografou',
+            'Strategie Terapeutyczne w rehabilitacji małego dziecka rok 2023, prowadzący Mgr Beata Wasicka',
+            'Diagnostyka HINE - badanie neurologiczne niemowląt rok 2023, prowadzący Dr Andrea Guzetta',
+            'Diagnostyka Metodą Prechtl - rok 2023, prowadzący Dr Andrea Guzetta',
+            'Diagnoza i Terapia Małego Dziecka - jakościowa ocena rozwoju motorycznego, ocena kliniczna procesów SI, terapia i programy domowe, rok 2023, prowadząca Mgr Magdalena Okrzasa, Mgr Sylwia Wiliams',
+            'Stopa Dziecka - diagnostyka i terapia - rok 2024 , prowadząca: Mgr Małgorzata Jura',
+            'Wczesna Diagnostyka Zaburzeń Sensomotorycznych u Noworodków i Niemowląt - rok 2023, prowadzący Dr Ewa Bartelmus',
+            'Terapia Dziecka Urodzonego Przedwcześnie - rok 2024, prowadzący Mgr Beata Wasicka',
+            'TMPI- PIMT Pediatric Integrative Manual Therapy<br>PIMT 1 oraz 2 rok 2024, prowadzący Ignacio Pastor<br>PIMT 3 oraz 4 rok 2025 , prowadzący Igancio Pastor<br>PIMT 5 oraz 6 rok 2025, prowadzący Ignacio Pastor'
         ],
         prices: [
-            { name: "Wizyta osteopatyczna", price: "200 PLN" },
-            { name: "Wizyta fizjoterapeutyczna", price: "150 PLN" }
+            { name: "Pierwsza wizyta", price: "200 PLN" },
+            { name: "Kolejna wizyta", price: "130 PLN" }
         ]
     },
     'dagmara': {
