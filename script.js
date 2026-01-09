@@ -121,6 +121,7 @@ const teamData = {
             'Stopa Dziecka - diagnostyka i terapia - rok 2024 , prowadząca: Mgr Małgorzata Jura',
             'Wczesna Diagnostyka Zaburzeń Sensomotorycznych u Noworodków i Niemowląt - rok 2023, prowadzący Dr Ewa Bartelmus',
             'Terapia Dziecka Urodzonego Przedwcześnie - rok 2024, prowadzący Mgr Beata Wasicka',
+            'Współczesna Fizjoterapia Oddechowa - stymulacja oraz oczyszczanie układu oddechowego od pierwszych dni życia - rok 2023 , prowadzący Mgr Mikołaj Kowalski',
             'TMPI- PIMT Pediatric Integrative Manual Therapy<br>PIMT 1 oraz 2 rok 2024, prowadzący Ignacio Pastor<br>PIMT 3 oraz 4 rok 2025 , prowadzący Igancio Pastor<br>PIMT 5 oraz 6 rok 2025, prowadzący Ignacio Pastor'
         ],
         prices: [
